@@ -14,5 +14,5 @@ Here are the software I use for my setup
 - [GammaDaemon](https://github.com/trollLemon/GammaDaemon)
 - [neovim](https://github.com/neovim/neovim)
 - [alacritty](https://github.com/alacritty/alacritty)
-
+- [waybar-module-pacman-updates](https://github.com/coffebar/waybar-module-pacman-updates)
 
