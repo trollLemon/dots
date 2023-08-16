@@ -1,0 +1,197 @@
+@define-color bg #321533;
+
+
+@define-color 1 #f8a18c;
+@define-color 2 #d23846;
+@define-color 3 #f1474b;
+@define-color 4 #d03048;
+@define-color 5 #d23846;
+@define-color 6 #f56555;
+@define-color 7 #f9e7eb;
+@define-color 8 #f8a18c;
+@define-color 9 #f56555;
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: @bg;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+
+#workspaces button {
+    padding: 0 3px;
+    background-color: transparent;
+    color: @1;
+}
+
+#workspaces button:hover {
+    background: @bg;
+}
+
+#workspaces button.focused {
+    background-color: @bk;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+#clock
+{
+    padding: 4px;
+    color: @1;
+    border: 2px solid @1;
+    background-color: @bg;
+}
+#battery {
+    padding: 4px;
+    color: @2;
+    border: 2px solid @2;
+    background-color: @bg;
+}
+#cpu{
+    padding: 4px;
+    color: @3;
+    border: 2px solid @3;
+    background-color: @bg;
+}
+
+#memory{
+    padding: 4px;
+    color: @4;
+    border: 2px solid @4;
+    background-color: @bg;
+}
+
+
+#disk {
+    padding: 4px;
+    color: @5;
+    border: 2px solid @5;
+    background-color: @bg;
+}
+
+#temperature {
+    padding: 4px;
+    color: @6;
+    border: 2px solid @6;
+    background-color: @bg;
+}
+#backlight
+{
+    padding: 4px;
+    color: @7;
+    border: 2px solid @7;
+    background-color: @bg;
+}
+#network
+{
+    padding: 4px;
+    color: @8;
+    border: 2px solid @8;
+    background-color: @bg;
+}
+
+#pulseaudio{
+    padding: 4px;
+    color: @9;
+    border: 2px solid @9;
+    background-color: @bg;
+}
+#wireplumber,
+#custom-media,
+#tray,
+#battery1,
+#mode,
+#clock,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    padding: 4px;
+    color: @1;
+    border: 2px solid @1;
+    background-color: @bg;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+    color: @fg;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+
+label:focus {
+    background-color: @bg;
+}
+
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+

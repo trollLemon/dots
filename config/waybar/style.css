@@ -1,0 +1,275 @@
+@define-color bg #08030a;
+
+@define-color 1 #fbcef9;
+@define-color 2 #f852e2;
+@define-color 3 #f54fdf;
+@define-color 4 #ff2fb8;
+@define-color 5 #f82abd;
+@define-color 6 #fb14a2;
+@define-color 7 #eb007e;
+@define-color 8 #98055b;
+@define-color 9 #f73dcf;
+@define-color 10 #f995f8;
+@define-color 11 #fc49d8;
+@define-color 12 #d50071;
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    padding: 2px;
+}
+
+window#waybar {
+    background-color: @bg;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+
+#workspaces button {
+    padding: 0 3px;
+    background-color: transparent;
+    color: @1;
+    margin: 0px 0px;
+}
+
+#workspaces button:hover {
+    background: @bg;
+}
+
+#workspaces button.focused {
+    background-color: @bk;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+#clock
+{
+    padding: 4px;
+    
+    color: @1;
+    border: 0px solid @1;
+    background-color: @bg;
+}
+#battery {
+    padding: 4px;
+    color: @2;
+    border: 0px solid @2;
+    background-color: @bg;
+
+}
+#cpu{
+    padding: 4px;
+    color: @3;
+    border: 0px solid @3;
+}
+#memory{
+    padding: 4px;
+    color: @4;
+    border: 0px solid @4;
+    background-color: @bg;
+
+}
+
+
+#disk {
+    padding: 4px;
+    color: @5;
+    border: 0px solid @5;
+    background-color: @bg;
+
+}
+
+#temperature {
+    padding: 4px;
+    color: @6;
+    border: 0px solid @6;
+    background-color: @bg;
+
+}
+#backlight
+{
+    padding: 4px;
+    color: @7;
+    border: 0px solid @7;
+    background-color: @bg;
+
+}
+#network
+{
+    padding: 4px;
+    color: @8;
+    border: 0px solid @8;
+    background-color: @bg;
+
+}
+
+
+#custom-hcu{
+    padding: 4px;
+    color: @10;
+    border: 0px solid @10;
+    background-color: @bg;
+
+}
+
+#custom-updates{
+    padding: 4px;
+    color: @11;
+    border: 0px solid @10;
+    background-color: @bg;
+
+}
+
+
+
+#pulseaudio{
+    padding: 4px;
+    color: @9;
+    border: 0px solid @9;
+    background-color: @bg;
+
+}
+#wireplumber,
+#custom-media,
+#tray,
+#battery1,
+#mode,
+#clock,
+#idle_inhibitor,
+#scratchpad,
+#custom-hcu,
+#mpd {
+    padding: 0px;
+    background-color: @bg;
+    border-radius: 0px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+  animation-name: funnyText;
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;   
+  border-color: @bg;
+    border-radius: 0px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+
+#custom-spacer{
+font-size: 17px;
+color: @12;
+}
+
+
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+
+label:focus {
+    background-color: @bg;
+}
+
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+
+
+@keyframes funnyText {
+  0% {
+    color: @1;
+  }
+  11% {
+    color: @2;
+  }
+  22% {
+    color: @3;
+  }
+  33% {
+    color: @4;
+  }
+  44% {
+    color: @5;
+  }
+  55% {
+    color: @6;
+  }
+  66% {
+    color: @7;
+  }
+  77% {
+    color: @8;
+  }
+  88% {
+    color: @9;
+  }
+
+  100% {
+  color: @1;
+  }
+}
+
+
+
+
