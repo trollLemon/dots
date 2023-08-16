@@ -1,4 +1,15 @@
+
+
+
+
+
 # dots
+![screenshot](././img.png)
+
+
+
+
+
 my dotfiles for my linux setup
 
 ## Wallpaper
