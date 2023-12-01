@@ -1,15 +1,19 @@
-" COQ.nvim configuration
+
 set number
 set nospell
+set path+=/home/haydn/Github/Dev/CPlus-palette/src/includes
 nnoremap <silent> <C-]> :bnext<CR>
 nnoremap <silent> <C-[> :bprev<CR>
 call plug#begin()
 " main one
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'kamykn/spelunker.vim'
+Plug 'rcarriga/nvim-notify'
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
-Plug 'ms-jpq/coq_nvim', {'do': ':COQdeps'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+"Plug 'ms-jpq/coq_nvim', {'do': ':COQdeps'}
+"Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}"
+Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -22,17 +26,50 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'AlphaTechnolog/pywal.nvim', { 'as': 'pywal' }
 
 call plug#end()
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Use K to show documentation in preview window
+nnoremap <silent> l :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#confirm():
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+
+
+
 
 let g:coq_settings = { 'auto_start': v:true }
 let g:enable_spelunker_vim = 1
-
+" Source the pywal color file
+if filereadable(expand("~/.cache/wal/colors.vim"))
+  source ~/.cache/wal/colors.vim
+endif
+" Customize the highlight groups using pywal colors
+highlight CocErrorHighlight ctermfg=1 guifg=#color1
+highlight CocWarningHighlight ctermfg=3 guifg=#color3
 lua << EOF
+
+
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
+
 
 
 require("telescope").load_extension "file_browser"
@@ -50,58 +87,8 @@ vim.api.nvim_set_keymap(
 )
 
 local lsp = require "lspconfig"
-local coq = require "coq" -- add this
+--local coq = require "coq" -- add this
 require("bufferline").setup{}
-lsp.rust_analyzer.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
-  settings = {
-    ['rust-analyzer'] = {},
-  },
-}
-
---lsp.jsts.setup({
- --   coq.lsp_ensure_capabilities({
-  --      on_attach = function(client)
-  --          -- COQ.nvim-specific setup
-   --         client.resolved_capabilities.document_formatting = false
-    --        coq.lsp_ensure_capabilities(client)
-    --    end
-    --})
---})
-lsp.rust_analyzer.setup({
-  coq.lsp_ensure_capabilities({
-    -- Additional Rust Analyzer configuration options can be specified here
-    -- For example:
-    cmd = { "rust-analyzer" },
-    settings = {
-      ["rust-analyzer"] = {
-     cargo = {
-           allFeatures = true,
-         },
-       },
-     },
-    on_attach = function(client)
-      -- COQ.nvim-specific setup
-      client.resolved_capabilities.document_formatting = false
-      coq.lsp_ensure_capabilities(client)
-    end
-  })
-})
-
-
-lsp.pyright.setup({})
-
--- C and C++ LSP setup
-lsp.clangd.setup({
-    coq.lsp_ensure_capabilities({
-        on_attach = function(client)
-            -- COQ.nvim-specific setup
-            client.resolved_capabilities.document_formatting = false
-            coq.lsp_ensure_capabilities(client)
-        end
-    })
-})
-
 
 
 require'nvim-treesitter.configs'.setup {
@@ -144,8 +131,8 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'pywal',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = { left = '|', right = '|'},
+    section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {},
       winbar = {},

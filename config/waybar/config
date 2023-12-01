@@ -1,13 +1,13 @@
 {
     // "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 20, // Waybar height (to be removed for auto height)
-     "width": 1926, // Waybar width
-    "spacing": 1, // Gaps between modules (4px)
+    "height": 9, // Waybar height (to be removed for auto height)
+     "width": 1920, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "custom/spacer", "sway/mode", "sway/window","custom/spacer", "network"],
-    "modules-center": ["clock","custom/spacer","custom/updates"],
-    "modules-right": ["disk", "custom/spacer" ,"custom/hcu","custom/spacer" ,"cpu" , "custom/spacer" ,"temperature" , "custom/spacer" ,"memory" ,"custom/spacer" ,  "battery", "custom/spacer" , "backlight",  "custom/spacer" ,  "pulseaudio"],
+    "modules-left": ["clock", "custom/spacer","network", "custom/spacer", "sway/window", "sway/mode"],
+    "modules-center": ["sway/workspaces","custom/spacer","battery", "custom/spacer","pulseaudio"],
+    "modules-right": ["custom/hcu","custom/spacer" ,"cpu" , "custom/spacer" ,"temperature" , "custom/spacer" ,"memory", "custom/spacer" , "disk"],
     // Modules configuration
    //  "sway/workspaces": {
     //     "disable-scroll": true,
@@ -128,7 +128,8 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": " {essid}",
+       "interval": 2,
        "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
@@ -161,14 +162,14 @@
 
     
     "custom/hcu": {
-		"format": "  {}",
+		"format": " {}",
 		"interval": 1,
 		"max-length": 20,
-		"exec": "~/.config/waybar/hcu"
+		"exec": "hcu"
 	},
 
 	"custom/spacer":{
-		"format": "|",
+		"format": "󰿟",
 	},
        "custom/updates": {
        "format": "{icon} {}",

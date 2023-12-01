@@ -1,17 +1,16 @@
-@define-color bg #08030a;
-
-@define-color 1 #fbcef9;
-@define-color 2 #f852e2;
-@define-color 3 #f54fdf;
-@define-color 4 #ff2fb8;
-@define-color 5 #f82abd;
-@define-color 6 #fb14a2;
-@define-color 7 #eb007e;
-@define-color 8 #98055b;
-@define-color 9 #f73dcf;
-@define-color 10 #f995f8;
-@define-color 11 #fc49d8;
-@define-color 12 #d50071;
+@define-color bg #001b32;
+@define-color 1 #d3c998;
+@define-color 2 #bfb987;
+@define-color 3 #b0ae7d;
+@define-color 4 #9f9476;
+@define-color 5 #c2b070;
+@define-color 6 #e2d9a9;
+@define-color 7 #d5cc9f;
+@define-color 8 #d3c998;
+@define-color 9 #bfb987;
+@define-color 10 #b0ae7d;
+@define-color 11 #c2b070;
+@define-color 12 #ffffec;
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
@@ -20,7 +19,9 @@
 }
 
 window#waybar {
-    background-color: @bg;
+
+    background-color: rgba(26,26,25,0.9);
+
 }
 
 window#waybar.hidden {
@@ -37,24 +38,26 @@ window#waybar.solo {
 */
 
 window#waybar.termite {
-    background-color: #3F3F3F;
 }
 
 
 #workspaces button {
     padding: 0 3px;
-    background-color: transparent;
     color: @1;
     margin: 0px 0px;
 }
 
 #workspaces button:hover {
-    background: @bg;
+    padding: 0 3px;
+    color: rgb(52, 24, 32);
+
+    background-color: @6;
+    margin: 0px 0px;
+
 }
 
 #workspaces button.focused {
-    background-color: @bk;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -3px @3;
 }
 
 #workspaces button.urgent {
@@ -72,13 +75,11 @@ window#waybar.termite {
     
     color: @1;
     border: 0px solid @1;
-    background-color: @bg;
 }
 #battery {
     padding: 4px;
     color: @2;
     border: 0px solid @2;
-    background-color: @bg;
 
 }
 #cpu{
@@ -90,7 +91,6 @@ window#waybar.termite {
     padding: 4px;
     color: @4;
     border: 0px solid @4;
-    background-color: @bg;
 
 }
 
@@ -99,7 +99,6 @@ window#waybar.termite {
     padding: 4px;
     color: @5;
     border: 0px solid @5;
-    background-color: @bg;
 
 }
 
@@ -107,7 +106,6 @@ window#waybar.termite {
     padding: 4px;
     color: @6;
     border: 0px solid @6;
-    background-color: @bg;
 
 }
 #backlight
@@ -115,7 +113,6 @@ window#waybar.termite {
     padding: 4px;
     color: @7;
     border: 0px solid @7;
-    background-color: @bg;
 
 }
 #network
@@ -123,7 +120,6 @@ window#waybar.termite {
     padding: 4px;
     color: @8;
     border: 0px solid @8;
-    background-color: @bg;
 
 }
 
@@ -132,7 +128,6 @@ window#waybar.termite {
     padding: 4px;
     color: @10;
     border: 0px solid @10;
-    background-color: @bg;
 
 }
 
@@ -140,7 +135,6 @@ window#waybar.termite {
     padding: 4px;
     color: @11;
     border: 0px solid @10;
-    background-color: @bg;
 
 }
 
@@ -150,7 +144,6 @@ window#waybar.termite {
     padding: 4px;
     color: @9;
     border: 0px solid @9;
-    background-color: @bg;
 
 }
 #wireplumber,
@@ -164,7 +157,6 @@ window#waybar.termite {
 #custom-hcu,
 #mpd {
     padding: 0px;
-    background-color: @bg;
     border-radius: 0px;
 }
 
@@ -179,6 +171,27 @@ window#waybar.termite {
     border-radius: 0px;
 }
 
+
+
+#battery.warning {
+	
+	 animation-name: funnyText;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;  
+
+
+}
+
+#battery.charging {
+	
+	 animation-name: funnyText2;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;   
+
+ color: rgba(22, 11, 52,0.7);
+}
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
@@ -191,7 +204,7 @@ window#waybar.termite {
 
 
 #custom-spacer{
-font-size: 17px;
+font-size: 25px;
 color: @12;
 }
 
@@ -206,7 +219,8 @@ color: @12;
 
 
 label:focus {
-    background-color: @bg;
+    
+    background-color: rgba(22, 11, 52,0.6);
 }
 
 
@@ -273,3 +287,37 @@ label:focus {
 
 
 
+
+@keyframes funnyText2 {
+  0% {
+    background-color: @1;
+  }
+  11% {
+    background-color:  @2;
+  }
+  22% {
+    background-color:  @3;
+  }
+  33% {
+    background-color: @4;
+  }
+  44% {
+    background-color: @5;
+  }
+  55% {
+    background-color: @6;
+  }
+  66% {
+    background-color: @7;
+  }
+  77% {
+    background-color:  @8;
+  }
+  88% {
+ 	background-color:  @9;
+  }
+
+  100% {
+  background-color:  @1;
+  }
+}
